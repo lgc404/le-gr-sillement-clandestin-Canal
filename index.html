@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <title>Le Grésillement Clandestin | Canal Sécurisé</title>
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #d1d1d1;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            /* Empêche la sélection de texte pour compliquer le vol de contenu */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Logo responsive adapté mobile et bureau */
+        .brand-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #666;
+            border: 1px dashed #333;
+            padding: 8px 12px;
+            background: #111;
+            letter-spacing: 1px;
+        }
+        .brand-logo span {
+            color: #aaa;
+            font-weight: bold;
+        }
+
+        /* Conteneur fluide et responsive pour toutes les tailles d'écran */
+        .secure-container {
+            border: 1px solid #333;
+            background-color: #141414;
+            padding: 25px;
+            width: 100%;
+            max-width: 440px;
+            box-sizing: border-box;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            margin: 80px 20px 20px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: #888;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            background-color: #050505;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 10px;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            /* Réactive la sélection/écriture uniquement dans les champs de saisie */
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        .notice {
+            font-size: 0.65rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        button {
+            width: 100%;
+            background-color: #222;
+            border: 1px solid #555;
+            color: #fff;
+            padding: 12px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 1px;
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 0.85rem;
+        }
+
+        button:hover {
+            background-color: #333;
+            border-color: #777;
+        }
+
+        #fallback-box {
+            display: none;
+            margin-top: 20px;
+            padding: 12px;
+            background: #080808;
+            border: 1px dashed #444;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        #fallback-box input {
+            background: #111;
+            border: 1px solid #333;
+            color: #00ff66;
+            padding: 5px;
+            font-family: monospace;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        #status-msg {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        /* Ajustement mobile pour les petits écrans */
+        @media (max-width: 480px) {
+            .brand-logo {
+                top: 10px;
+                left: 10px;
+                font-size: 0.75rem;
+                padding: 6px 10px;
+            }
+            .secure-container {
+                padding: 15px;
+                margin-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <!-- Désactive complètement le clic droit sur toute la page -->
+
+    <div class="brand-logo">
+        ⌛🎷 <span>L.G.C.</span>
+    </div>
+
+    <div class="secure-container">
+        <h2>[ CANAL SÉCURISÉ ]</h2>
+        <form id="secureForm" onsubmit="sendMail(event)">
+            <div class="form-group">
+                <label>IDENTIFIANT / NOM DE CODE</label>
+                <input type="text" id="agent_name" required placeholder="Ex: Opérateur_1910">
+            </div>
+            
+            <div class="form-group">
+                <label>NOTES DE CONTEXTE</label>
+                <textarea id="archive_notes" placeholder="Détails sur l'enregistrement, année, provenance..."></textarea>
+            </div>
+
+            <div class="notice">
+                * Note : Le bouton ouvre votre messagerie. Si le fichier dépasse la taille autorisée, compressez-le en .zip ou avec WinRAR.
+            </div>
+
+            <button type="submit">PRÉPARER LA TRANSMISSION</button>
+        </form>
+
+        <!-- PLAN DE SECOURS WEBMAIL -->
+        <div id="fallback-box">
+            <span style="color: #ffcc00;">> PROBLÈMES DE CANAL (Webmail Orange / Autre) ?</span><br>
+            Copiez directement l'adresse du QG et envoyez votre fichier manuellement :
+            <input type="text" id="target-email" value="oracle_404p@proton.me" readonly>
+            <div id="copy-instruction" style="color: #aaa;">Objet à utiliser : <br><b id="mail-subject-text" style="color:#fff;"></b></div>
+        </div>
+
+        <div id="status-msg">STATUT DU RÉSEAU : SÉCURISÉ</div>
+    </div>
+
+    <script>
+        // Neutralisation des raccourcis clavier de développement (F12, Ctrl+U, Ctrl+Shift+I, etc.)
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')) || 
+                (e.ctrlKey && e.key === 'U')
+            ) {
+                e.preventDefault();
+                alert("ACCÈS REFUSÉ : Canal sous surveillance.");
+                return false;
+            }
+        });
+
+        function sendMail(e) {
+            e.preventDefault();
+            
+            const agentName = document.getElementById('agent_name').value.trim();
+            const notes = document.getElementById('archive_notes').value.trim();
+            const statusMsg = document.getElementById('status-msg');
+            const fallbackBox = document.getElementById('fallback-box');
+            const mailSubjectText = document.getElementById('mail-subject-text');
+            
+            const myEmail = "oracle_404p@proton.me"; // Remplace par ton email
+            
+            const subject = "[CLANDESTIN] Archive de l'agent : " + agentName;
+            const body = "Nom de code : " + agentName + "\n\nNotes de contexte :\n" + notes + "\n\n--- [Pense à joindre ton fichier audio ou ton archive compressée ici] ---";
+            
+            mailSubjectText.textContent = subject;
+            fallbackBox.style.display = "block";
+            
+            statusMsg.textContent = "CANAL LANCÉ. VÉRIFIEZ VOTRE MESSAGERIE.";
+            
+            window.location.href = `mailto:${myEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+
+</body>
+</html>
